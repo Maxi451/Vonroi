@@ -10,7 +10,7 @@ public class Main extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int NUM_OF_POINTS = 10;
+	private static final int NUM_OF_POINTS = 5;
 	private static final int OFFSET_PERCENTAGE = 10;
 
 	private static final int X = 200;

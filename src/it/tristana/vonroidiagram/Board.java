@@ -51,9 +51,12 @@ public class Board extends JPanel {
 		SortedMap<Arc, SortedSet<Interval>> rendered = new TreeMap<>();
 		SortedSet<Arc> arcsField = arcs.getAllValues();
 		arcsField.forEach(arc -> {
-			drawArc(g2, arc, sweepline);
 			SortedSet<Interval> notRenderedIntervals = new TreeSet<>();
 			Point focus = arc.focus();
+			if (focus.y() > sweepline) {
+				return;
+			}
+
 			for (Arc other : arcsField) {
 				if (arc == other || other.focus().y() > sweepline) {
 					continue;
@@ -101,7 +104,7 @@ public class Board extends JPanel {
 			g2.fillOval((int) point.x() - HALF_POINT_SIZE, (int) point.y() - HALF_POINT_SIZE, HALF_POINT_SIZE * 2, HALF_POINT_SIZE * 2);
 		}
 	}
-	
+
 	public void increaseSweepline() {
 		sweepline = (sweepline + 1) % (int) max.y();
 	}

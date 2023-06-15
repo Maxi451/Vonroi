@@ -16,10 +16,10 @@ public class Vonroi implements Runnable {
 	private Point max;
 
 	public Vonroi(Point[] sites, Point min, Point max) {
+		this.eventQueue = new PriorityQueue<>();
 		for (Point site : sites) {
 			this.eventQueue.add(new SiteEvent(site));
 		}
-		this.eventQueue = new PriorityQueue<>();
 		this.beachline = new TreeSet<>();
 		this.arcs = new VertexMap<>();
 		this.min = min;
